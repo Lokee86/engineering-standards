@@ -10,11 +10,13 @@
     "docs/INDEX.md",
     "docs/documentation-standard.md",
     "docs/documentation-procedure.md",
+    "docs/maintainer-map.md",
     "docs/profiles.md",
     "docs/change-impact.md",
     "docs/completeness.md",
     "docs/adoption.md",
     "skills/documentation/SKILL.md",
+    "templates/maintainer-map.md",
     "policies/pitlord/documentation-core.json",
     "adoption/repositories.json"
   ],

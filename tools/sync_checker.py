@@ -14,6 +14,7 @@ STANDARD_DOCS = (
     "INDEX.md",
     "documentation-standard.md",
     "documentation-procedure.md",
+    "maintainer-map.md",
     "profiles.md",
     "change-impact.md",
     "completeness.md",

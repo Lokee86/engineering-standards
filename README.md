@@ -2,13 +2,14 @@
 
 This repository is the canonical source for shared engineering practices across Laughing Skull projects.
 
-The first governed practice is documentation. It combines the ownership-focused taxonomy used by Space Rocks with the guide/reference/architecture/operations separation, coverage mapping, and behavioral-contract discipline used by Demon Docs.
+The first governed practice is documentation. It combines the ownership-focused taxonomy used by Space Rocks with the guide/reference/architecture/operations separation, coverage mapping, behavioral-contract discipline used by Demon Docs, and intent-driven maintainer maps proven in Grimoire.
 
 ## Documentation standard
 
 - [Documentation index](docs/INDEX.md)
 - [Documentation standard](docs/documentation-standard.md)
 - [Documentation procedure](docs/documentation-procedure.md)
+- [Maintainer map](docs/maintainer-map.md)
 - [Repository profiles](docs/profiles.md)
 - [Change-impact rules](docs/change-impact.md)
 - [Completeness and status claims](docs/completeness.md)
