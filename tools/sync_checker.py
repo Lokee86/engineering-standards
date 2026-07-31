@@ -9,7 +9,10 @@ from pathlib import Path
 STANDARD_ROOT = Path(__file__).resolve().parents[1]
 SOURCE_DIR = STANDARD_ROOT / "tools" / "docs_policy"
 CHECKER_FILES = ("audit.py", "baseline.py", "check.py", "markdown.py", "model.py")
-POLICY_SOURCE = STANDARD_ROOT / "policies" / "pitlord" / "documentation-core.json"
+POLICY_SOURCES = (
+    STANDARD_ROOT / "policies" / "pitlord" / "documentation-core.json",
+    STANDARD_ROOT / "policies" / "pitlord" / "architecture-core.json",
+)
 STANDARD_DOCS = (
     "INDEX.md",
     "documentation-standard.md",
@@ -19,6 +22,17 @@ STANDARD_DOCS = (
     "change-impact.md",
     "completeness.md",
     "adoption.md",
+    "architecture/INDEX.md",
+    "architecture/architecture-standard.md",
+    "architecture/enforcement.md",
+    "architecture/ownership-and-dependency.md",
+    "architecture/seams-and-abstractions.md",
+    "architecture/state-lifecycle-and-concurrency.md",
+    "architecture/data-processes-and-protocols.md",
+    "architecture/resilience-observability-and-operations.md",
+    "architecture/repository-and-component-structure.md",
+    "architecture/testing-evolution-and-decisions.md",
+    "architecture/architecture-procedure.md",
 )
 
 
@@ -45,18 +59,20 @@ def sync_repository(repo: Path) -> None:
     for name in STANDARD_DOCS:
         source = STANDARD_ROOT / "docs" / name
         target = docs_destination / name
+        target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
         files[f"docs/{name}"] = digest(target)
 
     policy_destination = repo / ".standards" / "policies"
     policy_destination.mkdir(parents=True, exist_ok=True)
-    policy_target = policy_destination / "documentation-core.json"
-    shutil.copyfile(POLICY_SOURCE, policy_target)
-    files["policies/documentation-core.json"] = digest(policy_target)
+    for source in POLICY_SOURCES:
+        target = policy_destination / source.name
+        shutil.copyfile(source, target)
+        files[f"policies/{source.name}"] = digest(target)
 
     manifest = {
-        "schema": "laughing-skull.documentation-standard-snapshot.v1",
-        "standard": "documentation-v1",
+        "schema": "laughing-skull.engineering-standards-snapshot.v1",
+        "standard": "engineering-standards-v1",
         "source": "engineering-standards",
         "files": files,
     }
@@ -67,20 +83,20 @@ def sync_repository(repo: Path) -> None:
     (repo / ".standards" / "README.md").write_text(
         "# Generated Engineering Standards Snapshot\n\n"
         "This directory is generated from the canonical `engineering-standards` repository.\n"
-        "It contains the normative standard pages, checker snapshot, and reusable Pitlord policy used by this repository.\n"
+        "It contains normative standards pages, the documentation checker snapshot, and reusable Pitlord policies used by this repository.\n"
         "Do not edit generated files directly. Run `python tools/sync_checker.py <repo>` from the standards repository.\n",
         encoding="utf-8",
     )
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Sync the documentation checker into repositories")
+    parser = argparse.ArgumentParser(description="Sync the engineering standards snapshot into repositories")
     parser.add_argument("repositories", nargs="+", help="repository roots")
     args = parser.parse_args()
     for value in args.repositories:
         repo = Path(value)
         sync_repository(repo)
-        print(f"synced documentation checker: {repo.resolve()}")
+        print(f"synced engineering standards: {repo.resolve()}")
     return 0
 
 

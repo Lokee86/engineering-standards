@@ -17,6 +17,7 @@
     "docs/adoption.md",
     "docs/architecture/INDEX.md",
     "docs/architecture/architecture-standard.md",
+    "docs/architecture/enforcement.md",
     "docs/architecture/ownership-and-dependency.md",
     "docs/architecture/seams-and-abstractions.md",
     "docs/architecture/state-lifecycle-and-concurrency.md",
@@ -28,6 +29,7 @@
     "skills/documentation/SKILL.md",
     "templates/maintainer-map.md",
     "policies/pitlord/documentation-core.json",
+    "policies/pitlord/architecture-core.json",
     "adoption/repositories.json"
   ],
   "index_exempt_directories": ["stubs"],
@@ -37,11 +39,19 @@
     {
       "paths": ["tools/docs_policy/**"],
       "docs": ["docs/adoption.md", "docs/completeness.md"]
+    },
+    {
+      "paths": ["tools/sync_checker.py"],
+      "docs": ["docs/adoption.md", "docs/architecture/enforcement.md"]
+    },
+    {
+      "paths": ["policies/pitlord/architecture-core.json"],
+      "docs": ["docs/architecture/enforcement.md", "docs/adoption.md"]
     }
   ],
   "change_rules": [
     {
-      "paths": ["tools/docs_policy/**", "policies/**", "templates/**", "skills/**"],
+      "paths": ["tools/docs_policy/**", "tools/sync_checker.py", "policies/**", "templates/**", "skills/**"],
       "docs": ["docs/**"]
     }
   ]

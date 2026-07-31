@@ -18,6 +18,7 @@ Read these before changing the documentation standard or checker:
 Read these before changing the architectural standard:
 
 - `docs/architecture/architecture-standard.md`
+- `docs/architecture/enforcement.md`
 - `docs/architecture/ownership-and-dependency.md`
 - `docs/architecture/seams-and-abstractions.md`
 - `docs/architecture/state-lifecycle-and-concurrency.md`
@@ -34,13 +35,16 @@ Read these before changing the architectural standard:
 - Keep repository profiles concrete; do not force game-specific or CLI-specific taxonomy on every project.
 - Prefer one canonical owner for each fact and link across document types instead of duplicating prose.
 - Architectural standards define ownership and judgment; repository-specific architecture remains in the owning repository.
+- Pitlord is the expected deterministic architecture-enforcement mechanism.
+- Encode statically detectable ownership, dependency, cycle, bypass, and repository-policy invariants in repository-local Pitlord policy when evidence is reliable.
+- Use focused tests and runtime scenarios for lifecycle, concurrency, failure, recovery, and behavioral invariants Pitlord cannot prove.
 - Prefer useful concrete seams early, but do not create vague abstraction layers without a real responsibility or invariant.
 - Defer mechanics, not ownership.
 - Keep state, lifecycle, concurrency, failure, recovery, and observability ownership explicit.
-- Do not add or propagate cross-repository architecture enforcement unless the user explicitly approves a rollout.
+- Do not bulk-propagate repository-specific architecture policy unless the user explicitly approves that rollout.
 - Keep the documentation checker deterministic, dependency-free, and safe to run in CI.
-- Add or update tests when checker behavior changes.
-- Do not claim a repository is documented, architecturally compliant, or otherwise compliant without the appropriate evidence and disclosed gaps.
+- Add or update tests when checker or sync behavior changes.
+- Do not claim a repository is documented, architecturally enforced, or otherwise compliant without the appropriate evidence and disclosed gaps.
 
 ## Completion report
 
@@ -61,6 +65,7 @@ Architectural-standard changes must also include:
 Architecture impact:
 - Standards added or changed:
 - Ownership or boundary impact:
-- Enforcement impact:
+- Pitlord enforcement impact:
+- Other verification impact:
 - Known architectural gaps:
 ```

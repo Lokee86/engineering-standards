@@ -2,7 +2,7 @@
 
 This repository is the canonical source for shared engineering practices across Laughing Skull projects.
 
-The governed standards currently cover documentation and architecture. Documentation standards define how repository knowledge is owned, structured, maintained, and verified. Architectural standards define how responsibility, state, dependencies, seams, processes, failure behavior, and evolution should be designed and reviewed.
+The governed standards cover documentation and architecture. Documentation standards define how repository knowledge is owned, structured, maintained, and verified. Architectural standards define how responsibility, state, dependencies, seams, processes, failure behavior, evolution, and deterministic enforcement should be designed.
 
 ## Documentation standards
 
@@ -18,6 +18,7 @@ The governed standards currently cover documentation and architecture. Documenta
 
 - [Architecture standards index](docs/architecture/INDEX.md)
 - [Architecture standard](docs/architecture/architecture-standard.md)
+- [Architectural enforcement with Pitlord](docs/architecture/enforcement.md)
 - [Ownership and dependency direction](docs/architecture/ownership-and-dependency.md)
 - [Seams and abstractions](docs/architecture/seams-and-abstractions.md)
 - [State, lifecycle, and concurrency](docs/architecture/state-lifecycle-and-concurrency.md)
@@ -27,7 +28,7 @@ The governed standards currently cover documentation and architecture. Documenta
 - [Testing, evolution, and decisions](docs/architecture/testing-evolution-and-decisions.md)
 - [Architecture procedure](docs/architecture/architecture-procedure.md)
 
-The architectural standard is currently normative design guidance only. It is not automatically propagated or enforced across adopted repositories.
+Pitlord is the expected deterministic architecture-enforcement mechanism. Repository-local policy defines actual ownership areas, dependency direction, forbidden coupling, and cycle rules. Focused tests and runtime scenarios retain behavioral, lifecycle, failure, recovery, and compatibility invariants that static evidence cannot prove.
 
 ## Documentation enforcement
 
@@ -53,7 +54,15 @@ python tools/docs_policy/check.py \
   --write-baseline docs-standard.baseline.json
 ```
 
-Demon Docs remains the preferred maintenance engine for indexes, links, frontmatter, moves, and managed documentation surfaces. Pitlord enforces repository-level required paths and required policy language through the reusable policies under `policies/pitlord/`.
+Demon Docs remains the preferred maintenance engine for indexes, links, frontmatter, moves, and managed documentation surfaces. Pitlord enforces repository-level required paths and required policy language through reusable policies under `policies/pitlord/`.
+
+## Architecture enforcement
+
+Architecture-enforced repositories own a local `tools/pitlord/` policy and execution procedure. The expected gate validates policy, prepares current Lexicon and Arcana evidence, and runs Pitlord with a bounded timeout.
+
+The reusable `policies/pitlord/architecture-core.json` policy establishes the required local enforcement surface. It does not replace repository-specific semantic rules; meaningful ownership areas and dependency invariants must be defined by the repository that owns the architecture.
+
+Architecture rollout remains explicit per repository. This standard does not authorize automatic bulk policy propagation.
 
 ## Authority
 

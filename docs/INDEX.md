@@ -10,7 +10,7 @@ This index is the entry point for shared documentation and architectural standar
 
 The documentation standard governs knowledge ownership, document types, structure, implementation coverage, change impact, agent behavior, compliance checks, and status claims.
 
-The architecture standard governs responsibility ownership, dependency direction, seams, state, lifecycle, processes, protocols, failure handling, observability, repository structure, verification, migration, and architectural decisions.
+The architecture standard governs responsibility ownership, dependency direction, seams, state, lifecycle, processes, protocols, failure handling, observability, repository structure, verification, migration, architectural decisions, and Pitlord enforcement.
 
 ## Documentation standards
 
@@ -20,16 +20,16 @@ The architecture standard governs responsibility ownership, dependency direction
 - [Repository profiles](profiles.md) — Required document surfaces for libraries, CLIs, services, applications, games, and umbrella products.
 - [Change-impact rules](change-impact.md) — How implementation changes trigger documentation changes in the same work.
 - [Completeness and status claims](completeness.md) — Evidence required before calling documentation complete, current, or compliant.
-- [Adoption and enforcement](adoption.md) — Repository configuration, Demon Docs, Pitlord, CI, and documentation rollout responsibilities.
+- [Adoption and enforcement](adoption.md) — Repository configuration, Demon Docs, Pitlord, CI, and rollout responsibilities.
 
 ## Architecture standards
 
-- [Architecture standards](architecture/INDEX.md) — Core architectural rules and focused standards for ownership, seams, state, protocols, operations, structure, verification, and evolution.
+- [Architecture standards](architecture/INDEX.md) — Core architectural rules and focused standards for ownership, seams, state, protocols, operations, structure, verification, evolution, and Pitlord enforcement.
 
 ## Related docs
 
-Repository-specific architecture and documentation remain owned by each product repository. This repository defines shared judgment and procedure rather than centralizing every product's current design.
+Repository-specific architecture and documentation remain owned by each product repository. This repository defines shared judgment, procedure, and expected enforcement rather than centralizing every product's current design.
 
 ## Notes
 
-The documentation standard has shared deterministic enforcement. The architectural standard is currently normative guidance and has no cross-repository enforcement rollout.
+The documentation standard has shared deterministic enforcement. Pitlord is the expected deterministic architecture-enforcement mechanism, with repository-specific semantic policy adopted through explicit repository rollout.

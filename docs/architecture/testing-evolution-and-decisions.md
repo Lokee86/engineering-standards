@@ -10,6 +10,8 @@ This document defines how architectural invariants are verified, how systems evo
 
 Architecture must survive implementation change. Tests and deterministic gates protect the contracts that must remain true; architectural decision records explain why consequential tradeoffs were accepted; migration plans control changes that cannot occur atomically.
 
+Pitlord is the expected deterministic architecture gate for statically detectable repository and graph invariants. It complements rather than replaces focused behavioral, lifecycle, failure, recovery, and compatibility tests.
+
 ## Architectural invariants
 
 An architectural invariant is a property that must remain true across many local implementation changes.
@@ -25,22 +27,40 @@ Examples include:
 - clients cannot bypass server authority;
 - generated state is excluded from authored-source traversal.
 
-Each critical invariant should have a focused protecting test, static rule, contract fixture, integration scenario, or release gate.
+Each critical invariant should have a focused protecting test, Pitlord rule, contract fixture, integration scenario, or release gate.
 
-## Test layers
+## Test and enforcement layers
 
-Use the narrowest test that can protect the invariant:
+Use the narrowest evidence that can protect the invariant:
 
+- Pitlord repository rules for required or forbidden paths and content;
+- Pitlord ownership rules for unowned or multiply owned source;
+- Pitlord dependency and cycle rules for statically detectable architecture direction;
 - unit tests for local validation and transition rules;
 - package or component tests for ownership and lifecycle behavior;
 - contract tests for independently evolving consumers and providers;
 - persistence fixtures for format and migration compatibility;
 - integration tests for process, storage, and failure boundaries;
 - runtime scenarios for multi-component behavior and recovery;
-- static or policy checks for dependency direction and forbidden coupling;
 - release gates for packaging, installation, upgrade, and rollback.
 
-End-to-end tests do not replace focused owner tests. Focused tests do not replace cross-boundary contract tests.
+End-to-end tests do not replace focused owner tests. Focused tests do not replace cross-boundary contract tests. Pitlord does not replace tests for behavior the static graph cannot prove.
+
+## Pitlord policy evidence
+
+A meaningful Pitlord architecture rule must identify:
+
+```text
+Canonical architecture owner
+Protected invariant
+Source and target ownership areas
+Relations or repository evidence used
+Intentional exclusions or composition roots
+Failure severity
+Known adapter or evidence limits
+```
+
+Prefer a small number of high-confidence rules over broad speculative policy. Repeated manual findings are evidence that a durable rule is missing. A rule with no canonical architecture rationale is policy drift rather than architecture assurance.
 
 ## Behavioral-contract mapping
 
@@ -49,13 +69,13 @@ Complex or stateful systems should maintain a behavioral-contract matrix mapping
 ```text
 Canonical architecture owner
 Implementation boundary
-Protecting test or gate
+Pitlord rule, protecting test, or release gate
 Failure meaning
 Release significance
 Known coverage gap
 ```
 
-The matrix is a navigation and assurance artifact. It does not replace the tests or architecture documents it links.
+The matrix is a navigation and assurance artifact. It does not replace the tests, policy, or architecture documents it links.
 
 ## Safe evolution
 
@@ -70,7 +90,8 @@ Prefer:
 - backfills with repeatable checkpoints;
 - strangler replacement around one authoritative boundary;
 - feature flags that preserve one owner rather than fork policy;
-- measurable cutover criteria.
+- measurable cutover criteria;
+- temporary Pitlord exceptions or baselines with explicit removal conditions.
 
 Avoid:
 
@@ -79,7 +100,8 @@ Avoid:
 - migration fallbacks with no removal owner;
 - branching old and new policy in every caller;
 - format changes without old-data fixtures;
-- architecture rewrites that cannot be verified incrementally.
+- architecture rewrites that cannot be verified incrementally;
+- permanent suppression of ownership or forbidden-dependency findings.
 
 ## Architectural decision records
 
@@ -104,11 +126,12 @@ State, lifecycle, failure, and operational consequences
 Alternatives considered
 Compatibility and migration impact
 Verification and acceptance evidence
+Pitlord policy impact when statically detectable
 Known risks and debt
 Superseding or removal conditions
 ```
 
-An ADR records why. Canonical architecture documentation records what is currently true. When a decision ships, update both.
+An ADR records why. Canonical architecture documentation records what is currently true. Pitlord records which static violations are forbidden. When a decision ships, update all affected owners.
 
 ## Exceptions
 
@@ -120,6 +143,7 @@ An exception must be:
 - bounded by scope and duration where possible;
 - paired with compensating verification or operational controls;
 - visible in current architecture or limits documentation;
+- reflected in Pitlord policy or baseline when it affects a static rule;
 - reviewed when surrounding assumptions change.
 
 "Legacy," "temporary," and "faster" are not sufficient explanations without a concrete constraint and exit condition.
@@ -137,10 +161,11 @@ Why it remains
 What change would remove it
 Blocking dependency
 Detection or mitigation
+Pitlord finding or coverage gap when applicable
 Review trigger
 ```
 
-Debt must not be hidden as an undocumented fallback or permanent TODO.
+Debt must not be hidden as an undocumented fallback, permanent TODO, or opaque baseline entry.
 
 ## Review evidence
 
@@ -151,13 +176,15 @@ Before accepting a significant architectural change, reviewers should see:
 - state and lifecycle flow;
 - failure and recovery behavior;
 - migration stages and authority;
-- protecting tests or new gates;
+- Pitlord rule impact for static invariants;
+- protecting tests or new gates for non-static invariants;
 - documentation impact;
 - ADR or exception when required.
 
 ## Related docs
 
 - [Architecture standard](architecture-standard.md)
+- [Architectural enforcement with Pitlord](enforcement.md)
 - [Architecture procedure](architecture-procedure.md)
 - [Data, processes, and protocols](data-processes-and-protocols.md)
 - [Resilience, observability, and operations](resilience-observability-and-operations.md)

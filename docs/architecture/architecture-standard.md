@@ -14,11 +14,13 @@ The standard favors concrete ownership and useful seams over accidental coupling
 
 ## Scope and enforcement status
 
-These rules are normative design guidance for engineering work and architectural review.
+These rules are normative for engineering work, architectural review, and repository policy.
 
-They are not currently part of an automatically propagated cross-repository compliance gate. No repository is required to adopt a new checker, policy file, or architecture profile until a separate rollout is explicitly approved.
+Pitlord is the expected deterministic architecture-enforcement mechanism. Repositories encode their own ownership areas, dependency direction, forbidden coupling, cycles, and related static invariants in repository-local Pitlord policy. The shared standard supplies the enforcement model and reusable adoption policy, not one universal area graph.
 
-Repository-local architecture documents and architectural decision records may specialize these rules. Exceptions must be explicit and justified; silent divergence is not an architectural decision.
+Behavioral, lifecycle, concurrency, failure, recovery, and compatibility invariants that cannot be proven from static repository or graph evidence remain protected by focused tests, contract fixtures, runtime scenarios, and release gates.
+
+Architectural enforcement is adopted repository by repository. Adding Pitlord to this standard does not authorize unreviewed bulk policy propagation. Repository-local architecture documents and ADRs may specialize these rules; exceptions must be explicit and justified, and adopted standards may not be silently weakened.
 
 ## Core rules
 
@@ -36,9 +38,10 @@ Repository-local architecture documents and architectural decision records may s
 12. **Failure behavior is part of the architecture.** Timeouts, partial availability, retry, idempotency, rollback, degradation, and operator recovery are defined at the owning boundary.
 13. **Observability follows ownership.** Logs, traces, metrics, health, and diagnostics identify the responsible component and preserve correlation across boundaries.
 14. **Architectural invariants have protecting tests or gates.** A prose-only invariant is an aspiration unless the design makes violations visible.
-15. **Migrations preserve explicit authority.** Transitional systems identify which store, service, protocol, or path is authoritative at each stage.
-16. **Independent components are created for independent value, not aesthetic decomposition.** A component is independently usable only when it has a coherent contract, lifecycle, and consumer value outside its current host.
-17. **Exceptions and consequential tradeoffs are recorded.** Significant irreversible, cross-cutting, or surprising choices require an architectural decision record.
+15. **Statically detectable architectural invariants are encoded in Pitlord.** Ownership gaps, forbidden dependencies, cycles, bypasses, and repository-policy violations should fail deterministically when reliable evidence exists.
+16. **Migrations preserve explicit authority.** Transitional systems identify which store, service, protocol, or path is authoritative at each stage.
+17. **Independent components are created for independent value, not aesthetic decomposition.** A component is independently usable only when it has a coherent contract, lifecycle, and consumer value outside its current host.
+18. **Exceptions and consequential tradeoffs are recorded.** Significant irreversible, cross-cutting, or surprising choices require an architectural decision record.
 
 ## Minimum architectural evidence
 
@@ -55,11 +58,11 @@ Concurrency or scheduling model when applicable
 Failure, retry, shutdown, and recovery behavior
 Observability and diagnostics
 Migration and compatibility behavior when applicable
-Protecting tests or verification gates
+Protecting tests, Pitlord rules, or release gates
 Known limits, tradeoffs, and explicit exceptions
 ```
 
-The evidence may be distributed across focused architecture, protocol, operations, data, and development documents. It must not exist only in conversation, issue comments, or code layout.
+The evidence may be distributed across focused architecture, protocol, operations, data, development, and policy documents. It must not exist only in conversation, issue comments, code layout, or an unexplained policy rule.
 
 ## Architectural evaluation
 
@@ -73,6 +76,7 @@ A design should be challenged when:
 - shutdown, retry, recovery, and partial failure are left to callers to improvise;
 - generated state is edited as though it were source;
 - an architectural invariant lacks a focused test or deterministic gate;
+- a statically detectable ownership or dependency invariant is repeatedly reviewed manually instead of encoded in Pitlord;
 - a migration requires indefinite dual authority;
 - the proposed abstraction is more general than the demonstrated problem.
 
@@ -80,12 +84,15 @@ A design should be challenged when:
 
 Architecture must be documented according to the shared documentation standard. Maintainer maps route to canonical owners; focused code maps identify implementation and tests; neither substitutes for explaining ownership, flow, state, invariants, and failure behavior.
 
+Pitlord policy must link back to those canonical owners through rule descriptions, repository policy documentation, or the local Pitlord operations guide. Machine enforcement without an explained architecture owner is not sufficient evidence of a sound design.
+
 ## Related docs
 
 - [Ownership and dependency direction](ownership-and-dependency.md)
 - [Seams and abstractions](seams-and-abstractions.md)
 - [State, lifecycle, and concurrency](state-lifecycle-and-concurrency.md)
 - [Data, processes, and protocols](data-processes-and-protocols.md)
+- [Architectural enforcement with Pitlord](enforcement.md)
 - [Architecture procedure](architecture-procedure.md)
 
 ## Notes
