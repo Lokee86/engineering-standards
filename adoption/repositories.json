@@ -5,7 +5,7 @@
     {"name": "space-rocks", "profile": "game", "capabilities": ["service", "ui", "protocol", "data-pipeline", "stateful"], "status": "enforced-with-baseline", "baselined_findings": 132},
     {"name": "demon-docs", "profile": "cli-product", "capabilities": ["stateful", "research"], "status": "enforced"},
     {"name": "pitlord", "profile": "cli-product", "capabilities": ["stateful"], "status": "enforced"},
-    {"name": "grimoire", "profile": "cli-product", "capabilities": ["stateful", "research"], "status": "enforced-with-component-baselines", "baselined_findings": {"root": 97, "lexicon": 44, "arcana": 32}},
+    {"name": "grimoire", "profile": "cli-product", "capabilities": ["stateful", "protocol", "data-pipeline", "research"], "status": "enforced"},
     {"name": "warlock-toolchain", "profile": "umbrella-product", "capabilities": ["service", "ui", "stateful"], "status": "enforced-with-baseline", "baselined_findings": 74},
     {"name": "homunculus", "profile": "cli-product", "capabilities": ["stateful"], "status": "audit-pending"},
     {"name": "continuity-memory", "profile": "library-engine", "capabilities": ["stateful", "service"], "status": "audit-pending"},
