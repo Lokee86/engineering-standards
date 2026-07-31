@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  documentation-standard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run checker tests
+        run: python -m unittest discover -s tools/docs_policy/tests
+      - name: Check standards documentation
+        run: python tools/docs_policy/check.py --repo .

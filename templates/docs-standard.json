@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "profile": "cli-product",
+  "capabilities": ["stateful"],
+  "docs_root": "docs",
+  "root_index": "docs/INDEX.md",
+  "folder_index": "README.md",
+  "required_paths": [
+    "README.md",
+    "AGENTS.md",
+    "docs/INDEX.md",
+    "docs/documentation-policy.md",
+    "docs/documentation-procedure.md",
+    "docs/planning/roadmap.md",
+    "docs/limits/current-limitations.md",
+    "docs/development/documentation-coverage.md"
+  ],
+  "index_exempt_directories": ["stubs"],
+  "section_exemptions": [
+    "README.md",
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "docs/**/README.md",
+    "docs/INDEX.md",
+    "docs/**/INDEX.md",
+    "docs/generated/**"
+  ],
+  "required_sections": ["Purpose", "Overview", "Related docs", "Notes"],
+  "baseline": "docs-standard.baseline.json",
+  "coverage": [
+    {
+      "paths": ["internal/**"],
+      "docs": ["docs/development/documentation-coverage.md"]
+    }
+  ],
+  "change_rules": [
+    {
+      "paths": ["internal/**", "cmd/**"],
+      "docs": [
+        "docs/architecture/**",
+        "docs/reference/**",
+        "docs/development/documentation-coverage.md"
+      ]
+    }
+  ]
+}

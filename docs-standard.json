@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "profile": "standards",
+  "docs_root": "docs",
+  "root_index": "docs/INDEX.md",
+  "folder_index": "INDEX.md",
+  "required_paths": [
+    "README.md",
+    "AGENTS.md",
+    "docs/INDEX.md",
+    "docs/documentation-standard.md",
+    "docs/documentation-procedure.md",
+    "docs/profiles.md",
+    "docs/change-impact.md",
+    "docs/completeness.md",
+    "docs/adoption.md",
+    "skills/documentation/SKILL.md",
+    "policies/pitlord/documentation-core.json",
+    "adoption/repositories.json"
+  ],
+  "index_exempt_directories": ["stubs"],
+  "section_exemptions": ["docs/INDEX.md", "docs/**/INDEX.md"],
+  "required_sections": ["Purpose", "Overview", "Related docs", "Notes"],
+  "coverage": [
+    {
+      "paths": ["tools/docs_policy/**"],
+      "docs": ["docs/adoption.md", "docs/completeness.md"]
+    }
+  ],
+  "change_rules": [
+    {
+      "paths": ["tools/docs_policy/**", "policies/**", "templates/**", "skills/**"],
+      "docs": ["docs/**"]
+    }
+  ]
+}
