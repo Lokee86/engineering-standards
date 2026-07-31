@@ -11,6 +11,7 @@ SOURCE_DIR = STANDARD_ROOT / "tools" / "docs_policy"
 CHECKER_FILES = ("audit.py", "baseline.py", "check.py", "markdown.py", "model.py")
 POLICY_SOURCE = STANDARD_ROOT / "policies" / "pitlord" / "documentation-core.json"
 STANDARD_DOCS = (
+    "INDEX.md",
     "documentation-standard.md",
     "documentation-procedure.md",
     "profiles.md",

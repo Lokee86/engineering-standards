@@ -21,8 +21,7 @@ The standard governs documentation ownership, document types, structure, impleme
 
 ## Related docs
 
-- [Space Rocks documentation policy](../../space-rocks/docs/documentation-policy.md)
-- [Demon Docs documentation policy](../../demon-docs/docs/documentation-policy.md)
+Space Rocks and Demon Docs are the reference implementations used to derive this standard. Their repository-local documentation policies remain owned by those repositories rather than linked through workspace-relative paths.
 
 ## Notes
 
