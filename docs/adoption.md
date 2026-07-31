@@ -1,6 +1,6 @@
 # Adoption and Enforcement
 
-Parent index: [Documentation Standards](INDEX.md)
+Parent index: [Engineering Standards](INDEX.md)
 
 ## Purpose
 
@@ -8,7 +8,9 @@ This document defines how repositories adopt and enforce the shared documentatio
 
 ## Overview
 
-The shared repository owns the normative standard, profiles, checker, reusable Pitlord policies, templates, and adoption registry. Each product repository owns its current documentation, local specialization, exceptions, and CI configuration.
+The shared repository owns the normative documentation standard, profiles, checker, reusable Pitlord policies, templates, and adoption registry. Each product repository owns its current documentation, local specialization, exceptions, and CI configuration.
+
+This procedure currently applies only to documentation-standard adoption. The architectural standard is maintained here as normative design guidance, but no architecture checker, repository profile, propagation step, or cross-repository CI requirement is defined yet.
 
 ## Adoption steps
 
@@ -98,3 +100,5 @@ Then set `baseline` in `docs-standard.json`. A baseline may suppress known legac
 ## Notes
 
 Repository-local rules may be stricter. Space Rocks' type-specific service/protocol/data/design taxonomy and Demon Docs' coverage and behavioral-contract rules remain valid specializations.
+
+Do not infer architectural enforcement from the presence of `docs/architecture/`. A separate approved rollout is required before architecture rules are added to shared checkers, Pitlord policy, templates, vendored snapshots, adoption records, or repository CI.

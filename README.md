@@ -2,11 +2,10 @@
 
 This repository is the canonical source for shared engineering practices across Laughing Skull projects.
 
-The first governed practice is documentation. It combines the ownership-focused taxonomy used by Space Rocks with the guide/reference/architecture/operations separation, coverage mapping, behavioral-contract discipline used by Demon Docs, and intent-driven maintainer maps proven in Grimoire.
+The governed standards currently cover documentation and architecture. Documentation standards define how repository knowledge is owned, structured, maintained, and verified. Architectural standards define how responsibility, state, dependencies, seams, processes, failure behavior, and evolution should be designed and reviewed.
 
-## Documentation standard
+## Documentation standards
 
-- [Documentation index](docs/INDEX.md)
 - [Documentation standard](docs/documentation-standard.md)
 - [Documentation procedure](docs/documentation-procedure.md)
 - [Maintainer map](docs/maintainer-map.md)
@@ -15,9 +14,24 @@ The first governed practice is documentation. It combines the ownership-focused 
 - [Completeness and status claims](docs/completeness.md)
 - [Adoption and enforcement](docs/adoption.md)
 
-## Enforcement
+## Architecture standards
 
-Repositories adopt the standard through `docs-standard.json`.
+- [Architecture standards index](docs/architecture/INDEX.md)
+- [Architecture standard](docs/architecture/architecture-standard.md)
+- [Ownership and dependency direction](docs/architecture/ownership-and-dependency.md)
+- [Seams and abstractions](docs/architecture/seams-and-abstractions.md)
+- [State, lifecycle, and concurrency](docs/architecture/state-lifecycle-and-concurrency.md)
+- [Data, processes, and protocols](docs/architecture/data-processes-and-protocols.md)
+- [Resilience, observability, and operations](docs/architecture/resilience-observability-and-operations.md)
+- [Repository and component structure](docs/architecture/repository-and-component-structure.md)
+- [Testing, evolution, and decisions](docs/architecture/testing-evolution-and-decisions.md)
+- [Architecture procedure](docs/architecture/architecture-procedure.md)
+
+The architectural standard is currently normative design guidance only. It is not automatically propagated or enforced across adopted repositories.
+
+## Documentation enforcement
+
+Repositories adopt the documentation standard through `docs-standard.json`.
 
 Run the shared checker from this repository:
 
@@ -43,4 +57,4 @@ Demon Docs remains the preferred maintenance engine for indexes, links, frontmat
 
 ## Authority
 
-Repository-local policy may specialize the shared standard, but it may not silently weaken it. Every exception must be explicit in `docs-standard.json` and documented in the repository's documentation policy.
+Repository-local policy may specialize shared standards, but it may not silently weaken an adopted standard. Exceptions must be explicit and documented in the repository that owns the affected architecture or documentation.
