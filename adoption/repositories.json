@@ -9,6 +9,7 @@
     {"name": "warlock-toolchain", "profile": "umbrella-product", "capabilities": ["service", "ui", "stateful"], "status": "enforced-with-baseline", "baselined_findings": 74},
     {"name": "homunculus", "profile": "cli-product", "capabilities": ["stateful"], "status": "audit-pending"},
     {"name": "continuity-memory", "profile": "library-engine", "capabilities": ["stateful", "service"], "status": "audit-pending"},
+    {"name": "ctx", "profile": "cli-product", "capabilities": ["service", "ui", "stateful", "protocol", "data-pipeline"], "status": "enforced"},
     {"name": "lodestone", "profile": "library-engine", "capabilities": ["stateful"], "status": "audit-pending"}
   ]
 }

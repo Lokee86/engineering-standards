@@ -29,7 +29,9 @@ Use this map when the owning standard or enforcement surface is unclear. It is a
 | Persistence, generated state, processes, protocols, and migration | [Data, processes, and protocols](architecture/data-processes-and-protocols.md) | Owning contracts, repository policy, and migration tests | Pitlord, contract, and migration review |
 | Failures, degradation, observability, health, and recovery | [Resilience, observability, and operations](architecture/resilience-observability-and-operations.md) | Owning runtime and operations boundaries | Operational and failure tests |
 | Package, service, monorepo, and umbrella-product boundaries | [Repository and component structure](architecture/repository-and-component-structure.md) | Repository Pitlord areas and component policies | Pitlord plus architectural review |
-| Invariant tests, ADRs, exceptions, and architectural debt | [Testing, evolution, and decisions](architecture/testing-evolution-and-decisions.md) | Repository tests, Pitlord policy, ADRs, and baselines | Test, policy, decision, and migration evidence |
+| Invariant tests, exceptions, and architectural debt | [Testing, evolution, and decisions](architecture/testing-evolution-and-decisions.md) | Repository tests, Pitlord policy, explicit exceptions, and baselines | Test, policy, and migration evidence |
+| ADR structure, status, and supersession | [Architectural decision records](architecture/decision-records.md) | Repository `docs/decisions/` and `templates/adr.md` | Decision index, affected docs, policy, and protecting evidence |
+| Architecture audit evidence and report shape | [Architecture audit reports](architecture/audit-reports.md) | `templates/architecture-audit-report.md` and repository-local reports | Revision, scope, evidence, remediation, and rerun verification |
 | Architecture design and review workflow | [Architecture procedure](architecture/architecture-procedure.md) | Canonical docs, repository Pitlord policy, and focused gates | Review checklist and repository gate |
 
 ## Boundaries

@@ -99,6 +99,8 @@ Any exception is explicit, bounded, and owned.
 
 ## Completion report
 
+Architectural work should report the following. Repository-wide audits should instead use the [architecture audit report shape](audit-reports.md).
+
 Architectural work should report:
 
 ```text

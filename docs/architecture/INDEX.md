@@ -23,6 +23,8 @@ Pitlord is the expected deterministic architecture-enforcement mechanism. Reposi
 - [Resilience, observability, and operations](resilience-observability-and-operations.md) — Failure behavior, diagnostics, health, recovery, and operational visibility.
 - [Repository and component structure](repository-and-component-structure.md) — Package, service, application, monorepo, and independently usable component boundaries.
 - [Testing, evolution, and decisions](testing-evolution-and-decisions.md) — Architectural invariants, Pitlord policy, contract tests, migrations, ADRs, exceptions, and debt.
+- [Architectural decision records](decision-records.md) — Repository-local ADR structure, status, supersession, required content, and completion rules.
+- [Architecture audit reports](audit-reports.md) — Evidence, severity, caveats, remediation ordering, and the standard audit report shape.
 - [Architecture procedure](architecture-procedure.md) — Required reasoning, enforcement, and review workflow for architectural changes.
 
 ## Related docs

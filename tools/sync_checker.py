@@ -32,6 +32,8 @@ STANDARD_DOCS = (
     "architecture/resilience-observability-and-operations.md",
     "architecture/repository-and-component-structure.md",
     "architecture/testing-evolution-and-decisions.md",
+    "architecture/decision-records.md",
+    "architecture/audit-reports.md",
     "architecture/architecture-procedure.md",
 )
 

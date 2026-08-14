@@ -115,7 +115,7 @@ Create an ADR when a decision is:
 - a migration that temporarily violates the desired steady state;
 - a public compatibility or persistence commitment.
 
-A useful ADR contains:
+Use the shared [ADR structure and template](decision-records.md). A useful ADR contains:
 
 ```text
 Title and status
